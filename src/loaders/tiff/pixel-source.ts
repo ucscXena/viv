@@ -1,4 +1,4 @@
-import type { GeoTIFFImage } from 'geotiff';
+import type { GeoTIFFImage } from 'ucsc-xena-geotiff';
 import type { TypedArray } from 'zarr';
 import { getImageSize, isInterleaved, SIGNAL_ABORTED } from '../utils';
 
@@ -35,7 +35,7 @@ class TiffPixelSource<S extends string[]> implements PixelSource<S> {
 
   async getRaster({ selection, signal }: RasterSelection<S>) {
     const image = await this._indexer(selection);
-    return this._readRasters(image, {/* signal */});
+    return this._readRasters(image, { signal });
   }
 
   async getTile({ x, y, selection, signal }: TileSelection<S>) {
@@ -45,7 +45,7 @@ class TiffPixelSource<S extends string[]> implements PixelSource<S> {
     const window = [x0, y0, x0 + width, y0 + height];
 
     const image = await this._indexer(selection);
-    return this._readRasters(image, { window, width, height/*, signal*/ });
+    return this._readRasters(image, { window, width, height, signal });
   }
 
   private async _readRasters(image: GeoTIFFImage, props?: ReadRastersOptions) {

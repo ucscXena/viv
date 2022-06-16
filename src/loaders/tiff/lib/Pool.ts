@@ -1,4 +1,4 @@
-import { Pool } from 'geotiff';
+import { Pool } from 'ucsc-xena-geotiff';
 import Worker from './decoder.worker.ts?worker&inline';
 
 // https://developer.mozilla.org/en-US/docs/Web/API/NavigatorConcurrentHardware/hardwareConcurrency

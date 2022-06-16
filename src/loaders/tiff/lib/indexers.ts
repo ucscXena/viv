@@ -1,4 +1,4 @@
-import { GeoTIFFImage, GeoTIFF } from 'geotiff';
+import { GeoTIFFImage, GeoTIFF } from 'ucsc-xena-geotiff';
 import type { OmeTiffSelection } from '../ome-tiff';
 import type { OMEXML } from '../../omexml';
 

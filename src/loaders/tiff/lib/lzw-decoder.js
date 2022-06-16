@@ -1,6 +1,6 @@
 import { decompress } from 'lzw-tiff-decoder';
 
-import { BaseDecoder } from 'geotiff';
+import { BaseDecoder } from 'ucsc-xena-geotiff';
 
 export default class LZWDecoder extends BaseDecoder {
   constructor(fileDirectory) {

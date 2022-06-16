@@ -1,5 +1,5 @@
-import { fromUrl, fromBlob, addDecoder } from 'geotiff';
-import type { GeoTIFF } from 'geotiff';
+import { fromUrl, fromBlob, addDecoder } from 'ucsc-xena-geotiff';
+import type { GeoTIFF } from 'ucsc-xena-geotiff';
 
 import { createOffsetsProxy, checkProxies } from './lib/proxies';
 import LZWDecoder from './lib/lzw-decoder';
@@ -66,8 +66,9 @@ export async function loadOmeTiff(
   if (typeof source === 'string') {
     // https://github.com/ilan-gold/geotiff.js/tree/viv#abortcontroller-support
     // https://www.npmjs.com/package/lru-cache#options
-    // Cache size needs to be infinite due to consistency issues.
-    tiff = await fromUrl(source, { ...headers, cacheSize: Infinity });
+    const blockSize = 4 * 64 * 1024;
+    const cacheSize = ~~(100 * 1000 * 1000 / blockSize); // 100M cache
+    tiff = await fromUrl(source, { ...headers, cacheSize, blockSize });
   } else {
     tiff = await fromBlob(source);
   }
