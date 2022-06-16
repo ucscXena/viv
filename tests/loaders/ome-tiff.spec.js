@@ -1,5 +1,5 @@
 import test from 'tape';
-import { fromFile } from 'geotiff';
+import { fromFile } from 'ucsc-xena-geotiff';
 
 import { load } from '../../src/loaders/tiff/ome-tiff';
 

@@ -1,6 +1,6 @@
 {
   "name": "ucsc-xena-viv",
-  "version": "0.12.8-2",
+  "version": "0.12.8-3",
   "main": "dist/ucsc-xena-viv.es.js",
   "module": "dist/ucsc-xena-viv.es.js",
   "types": "dist/index.d.ts",
